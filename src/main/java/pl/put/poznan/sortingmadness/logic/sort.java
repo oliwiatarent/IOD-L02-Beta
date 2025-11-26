@@ -225,6 +225,11 @@ public class sort {
 
     public static float ChooseSort(Object Data [], Integer Indexes [], int choice){
 
+        if(choice>6 || Data == null){
+            System.out.println("błąd danych");
+            return -1;
+        }
+
         String s [] = convert(Data);
         Integer wynik [] = new Integer[Indexes.length];
 
@@ -257,8 +262,13 @@ public class sort {
 
         for(int i=0;i<Data.length;i++) Indexes[i]=i;
 
-        float time = ChooseSort(Data,Indexes,5);
-        System.out.println(time); 
+        Scanner read = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter algorithm to sort data (1-bubblesort 2-mergesort 3-selectionsort 4-insertsort 5-quicksort 6-bogosort)");
+
+        int choice = Integer.parseInt(read.nextLine());  // Read user input
+
+        float time = ChooseSort(Data,Indexes,choice);
+        System.out.println(time);
     }
 
 }
