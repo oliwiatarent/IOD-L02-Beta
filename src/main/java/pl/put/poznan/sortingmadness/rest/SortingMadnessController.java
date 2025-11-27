@@ -1,4 +1,5 @@
 package pl.put.poznan.sortingmadness.rest;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -8,20 +9,22 @@ import java.util.Arrays;
 
 
 @RestController
-@RequestMapping("/{text}")
+@RequestMapping("/sort")
 public class SortingMadnessController {
 
     private static final Logger logger = LoggerFactory.getLogger(SortingMadnessController.class);
 
-    // @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    // public String get() {
-    //     return;
-    // }
+     @PostMapping(consumes = "application/json", produces = "application/json")
+     public SortingMadnessInput post(@RequestBody SortingMadnessInput input) {
 
-    // @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    // public String post() {
-    //     return;
-    // }
+         if (input.getIntegerList() != null) logger.debug(input.getIntegerList().toString());
+         if (input.getFloatList() != null) logger.debug(input.getFloatList().toString());
+         if (input.getStringList() != null) logger.debug(input.getStringList().toString());
+         logger.debug(input.getAscending().toString());
+         logger.debug(input.getIterations().toString());
+
+         return input;
+     }
 }
 
 

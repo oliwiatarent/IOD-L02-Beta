@@ -1,3 +1,6 @@
 pl/put/poznan/sortingmadness/logic/SortingMadness.class
 pl/put/poznan/sortingmadness/app/SortingMadnessApplication.class
+pl/put/poznan/sortingmadness/rest/SortingMadnessOutput.class
 pl/put/poznan/sortingmadness/rest/SortingMadnessController.class
+pl/put/poznan/sortingmadness/rest/SortingMadnessInput.class
+sort.class
