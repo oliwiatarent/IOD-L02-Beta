@@ -4,10 +4,11 @@ import java.util.List;
 
 public class SortingMadnessOutput {
 
-    private Float time;
+    private long time;
     private Object[] result;
+    private Integer[] sortedIndexes;
 
-    public void setTime(Float newTime) {
+    public void setTime(long newTime) {
         this.time = newTime;
     }
 
@@ -15,11 +16,19 @@ public class SortingMadnessOutput {
         this.result = newResult;
     }
 
-    public Float getTime() {
+    public void setSortedIndexes(Integer[] indexes) {
+        this.sortedIndexes = indexes;
+    }
+
+    public long getTime() {
         return time;
     }
 
     public Object[] getResult() {
         return result;
+    }
+
+    public Integer[] getSortedIndexes() {
+        return sortedIndexes;
     }
 }

@@ -230,21 +230,16 @@ public class SortingMadness {
         return s;
     }
 
-    public static SortingMadnessOutput ChooseSort(Object[] Data, Integer[] Indexes, int choice){
+    public static SortingMadnessOutput ChooseSort(Object[] Data, Integer[] Indexes, int choice, Boolean ascending) {
 
         SortingMadnessOutput output = new SortingMadnessOutput();
 
-        if(choice>6 || Data == null){
-            System.out.println("błąd danych");
-            return output;
-        }
-
-        String[] s = convert(Data);
-        Integer[] wynik = new Integer[Indexes.length];
-        Object[] wynikLista = new Object[Indexes.length];
+        int len = Indexes.length;
+        String[] s = convert(Data); // TODO: jeśli chcemy żeby wyjście JSON zachowywało typ z wejścia to by trzeba przerobić
+        Integer[] wynik = new Integer[len];
+        Object[] wynikLista = new Object[len];
 
         long startTime = System.currentTimeMillis();
-
 
         if(choice==1)wynik=bubblesort(s,Indexes);
         if(choice==2)wynik=mergesort(s,Indexes);
@@ -253,17 +248,25 @@ public class SortingMadness {
         if(choice==5)wynik=quicksort(s,Indexes);
         if(choice==6)wynik=bogosort(s,Indexes);
 
-        float czas = System.currentTimeMillis() - startTime;
-        for (int i = 0; i < Data.length; i++) {
-            wynikLista[i] = Data[wynik[i]].toString();
+//        long czas = System.currentTimeMillis() - startTime;
+
+        if (!ascending) {
+            Integer[] reversed = new Integer[len];
+            for (int i = 0; i < len; i++) {
+                reversed[i] = wynik[len - 1 - i];
+            }
+            wynik = reversed;
         }
+
+        for (int i = 0; i < len; i++) {
+            wynikLista[i] = Data[wynik[i]];
+        }
+
+        long czas = System.currentTimeMillis() - startTime;
 
         output.setTime(czas);
         output.setResult(wynikLista);
-
-        // for(int i=0;i<Data.length;i++){
-        //     System.out.println(Data[wynik[i]].toString()+ " " + wynik[i].toString());
-        // }
+        output.setSortedIndexes(Indexes);
 
         return output;
     }
