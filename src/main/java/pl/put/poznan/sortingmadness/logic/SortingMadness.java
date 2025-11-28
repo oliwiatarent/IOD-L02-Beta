@@ -266,7 +266,7 @@ public class SortingMadness {
 
         output.setTime(czas);
         output.setResult(wynikLista);
-        output.setSortedIndexes(Indexes);
+        output.setSortedIndexes(wynik);
 
         return output;
     }

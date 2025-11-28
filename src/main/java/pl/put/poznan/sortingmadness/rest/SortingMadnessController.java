@@ -37,7 +37,7 @@ public class SortingMadnessController {
          for (int i = 0; i < tabLength; i++)
              indexes[i] = i;
 
-         String[] values = new String[tabLength];
+         Object[] values = new Object[tabLength];
 
          boolean isObjectList = list.get(0) instanceof Map;
 
@@ -56,7 +56,7 @@ public class SortingMadnessController {
                  if (val == null) {
                      throw new IllegalArgumentException("Obiekt " + i + " nie ma pola " + property + ".");
                  }
-                 values[i] = val.toString();
+                 values[i] = val;
              }
          } else {
              if (input.getProperty() != null) {
@@ -67,7 +67,7 @@ public class SortingMadnessController {
                  if (val == null) {
                      throw new IllegalArgumentException("Element" + i + " na liście jest null.");
                  }
-                 values[i] = val.toString();
+                 values[i] = val;
              }
          }
 
