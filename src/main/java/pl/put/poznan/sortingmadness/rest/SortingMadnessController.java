@@ -15,15 +15,54 @@ public class SortingMadnessController {
     private static final Logger logger = LoggerFactory.getLogger(SortingMadnessController.class);
 
      @PostMapping(consumes = "application/json", produces = "application/json")
-     public SortingMadnessInput post(@RequestBody SortingMadnessInput input) {
+     public SortingMadnessOutput post(@RequestBody SortingMadnessInput input) {
 
-         if (input.getIntegerList() != null) logger.debug(input.getIntegerList().toString());
-         if (input.getFloatList() != null) logger.debug(input.getFloatList().toString());
-         if (input.getStringList() != null) logger.debug(input.getStringList().toString());
+         SortingMadnessOutput output = new SortingMadnessOutput();
+         int type = 0;
+         int tabLength = 0;
+
+         logger.debug("Input:");
+         
+         if (input.getIntegerList() != null) {
+             type = 1;
+             tabLength = input.getIntegerList().length;
+             logger.debug(Arrays.toString(input.getIntegerList()));
+         }
+         if (input.getFloatList() != null) {
+             type = 2;
+             tabLength = input.getFloatList().length;
+             logger.debug(Arrays.toString(input.getFloatList()));
+         }
+         if (input.getStringList() != null) {
+             type = 3;
+             tabLength = input.getStringList().length;
+             logger.debug(Arrays.toString(input.getStringList()));
+         }
+
          logger.debug(input.getAscending().toString());
          logger.debug(input.getIterations().toString());
 
-         return input;
+         Integer[] Indexes = new Integer [tabLength];
+         for (int i = 0; i < tabLength; i++)
+             Indexes[i] = i;
+
+         switch (type){
+             case 1:
+                 output = SortingMadness.ChooseSort(input.getIntegerList(), Indexes, input.getAlgorithm());
+                 break;
+             case 2:
+                 output = SortingMadness.ChooseSort(input.getFloatList(), Indexes, input.getAlgorithm());
+                 break;
+             case 3:
+                 output = SortingMadness.ChooseSort(input.getStringList(), Indexes, input.getAlgorithm());
+                 break;
+         }
+
+         logger.debug("Response:");
+         logger.debug(String.valueOf(output.getTime()));
+         logger.debug(Arrays.toString(output.getResult()));
+
+         return output;
      }
 }
 
