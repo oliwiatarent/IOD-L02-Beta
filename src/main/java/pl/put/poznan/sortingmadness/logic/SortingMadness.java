@@ -98,7 +98,7 @@ public class SortingMadness {
         // kopiowanie posortowanej wartości do pustych elementów tablicy wyjściowej
         if (limit < N) {
             for (int i=0; i<N; i++) {
-                if (newIndexes[i] == null) newIndexes[i] = newIndexes[0];
+                if (newIndexes[i] == null) newIndexes[i] = newIndexes[limit-1];
             }
         }
 
