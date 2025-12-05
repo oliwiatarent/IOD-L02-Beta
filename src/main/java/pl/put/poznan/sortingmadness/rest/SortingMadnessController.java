@@ -72,7 +72,7 @@ public class SortingMadnessController {
          }
 
          boolean ascending = input.getAscending();
-         output = SortingMadness.ChooseSort(values, indexes, algorithm, ascending);
+         output = SortingMadness.ChooseSort(values, indexes, algorithm, ascending, input.getIterations());
 
         if (isObjectList) {
             Object[] resultObjects = new Object[list.size()];
