@@ -1,0 +1,59 @@
+{
+    "list": [
+        {
+            "name": "vyd",
+            "age": 75,
+            "score": 1.15
+        },
+        {
+            "name": "ecjua",
+            "age": 59,
+            "score": 7.35
+        },
+        {
+            "name": "zhvdpvss",
+            "age": 71,
+            "score": 0.32
+        },
+        {
+            "name": "iou",
+            "age": 76,
+            "score": 18.83
+        },
+        {
+            "name": "tzj",
+            "age": 52,
+            "score": 5.99
+        },
+        {
+            "name": "fnss",
+            "age": 45,
+            "score": 19.57
+        },
+        {
+            "name": "odls",
+            "age": 36,
+            "score": 1.87
+        },
+        {
+            "name": "bvhy",
+            "age": 56,
+            "score": 10.11
+        },
+        {
+            "name": "rgghks",
+            "age": 64,
+            "score": 0.74
+        },
+        {
+            "name": "yrj",
+            "age": 63,
+            "score": 7.96
+        }
+    ],
+    "ascending": true,
+    "algorithm": 2,
+    "iterations": 1,
+    "autoChoose": false,
+    "property": "score"
+}
