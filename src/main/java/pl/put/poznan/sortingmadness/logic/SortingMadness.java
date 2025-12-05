@@ -51,11 +51,11 @@ public class SortingMadness {
 
     }
 
-    public static Integer [] bubblesort (String[] Data, Integer[] Indexes){
+    public static Integer [] bubblesort (String[] Data, Integer[] Indexes, int limit){
 
         Integer N = Data.length;
 
-        for(int i=0;i<N;i++){
+        for(int i=0;i<N && i<limit; i++){
             for(int j=0;j<N;j++){
                 if(0>Data[i].compareTo(Data[j])){
                     String tmp=Data[i];
@@ -79,10 +79,10 @@ public class SortingMadness {
         return Indexes;
     }
 
-    public static Integer [] selectionsort (String[] Data, Integer[] Indexes){
+    public static Integer [] selectionsort (String[] Data, Integer[] Indexes, int limit){
         int N = Data.length;
         Integer[] newIndexes = new Integer[N];
-        for(int i=0;i<N;i++){
+        for(int i=0;i<N && i<limit;i++){
             String min="";
             Integer m=0;
             for(int j=0;j<N;j++){
@@ -95,17 +95,24 @@ public class SortingMadness {
             Data[m]="";
         }
 
+        // kopiowanie posortowanej wartości do pustych elementów tablicy wyjściowej
+        if (limit < N) {
+            for (int i=0; i<N; i++) {
+                if (newIndexes[i] == null) newIndexes[i] = newIndexes[0];
+            }
+        }
+
         Indexes=newIndexes;
         return Indexes;
     }
 
 
-    public static Integer [] insertsort (String[] Data, Integer[] Indexes){
+    public static Integer [] insertsort (String[] Data, Integer[] Indexes, int limit){
         int N = Data.length;
 
 
 
-        for(int i=0;i<N-1;i++){
+        for(int i=0;i<N-1 && i<limit;i++){
             int j=i+1;
             while(j>0 && 0>Data[j].compareTo(Data[j-1])){
                 String tmp=Data[j];
@@ -180,13 +187,16 @@ public class SortingMadness {
         return Indexes;
     }
 
-    public static Integer [] bogosort(String[] Data, Integer[] Indexes){
+    public static Integer [] bogosort(String[] Data, Integer[] Indexes, int limit){
         int N = Data.length;
         boolean[] used = new boolean [N];
         for(int i=0;i<N;i++)used[i]=false;
 
+        // do zliczania iteracji
+        int counter=0;
         boolean stop=false;
-        while (!stop) {
+        while (!stop && counter < limit) {
+            counter++;
             stop=true;
             for(int i=1;i<N;i++){
                 if(0<Data[Indexes[i-1]].compareTo(Data[Indexes[i]])){
@@ -230,23 +240,24 @@ public class SortingMadness {
         return s;
     }
 
-    public static SortingMadnessOutput ChooseSort(Object[] Data, Integer[] Indexes, int choice, Boolean ascending) {
+    public static SortingMadnessOutput ChooseSort(Object[] Data, Integer[] Indexes, int choice, Boolean ascending, Integer iterations) {
 
         SortingMadnessOutput output = new SortingMadnessOutput();
 
         int len = Indexes.length;
+        int limit = (iterations != null && iterations > 0) ?  iterations : Integer.MAX_VALUE;
         String[] s = convert(Data); // TODO: jeśli chcemy żeby wyjście JSON zachowywało typ z wejścia to by trzeba przerobić
         Integer[] wynik = new Integer[len];
         Object[] wynikLista = new Object[len];
 
         long startTime = System.currentTimeMillis();
 
-        if(choice==1)wynik=bubblesort(s,Indexes);
-        if(choice==2)wynik=mergesort(s,Indexes);
-        if(choice==3)wynik=selectionsort(s,Indexes);
-        if(choice==4)wynik=insertsort(s,Indexes);
-        if(choice==5)wynik=quicksort(s,Indexes);
-        if(choice==6)wynik=bogosort(s,Indexes);
+        if(choice==1)wynik=bubblesort(s,Indexes, limit);
+        if(choice==2)wynik=mergesort(s,Indexes);            //bez liczby iteracji
+        if(choice==3)wynik=selectionsort(s,Indexes, limit);
+        if(choice==4)wynik=insertsort(s,Indexes, limit);
+        if(choice==5)wynik=quicksort(s,Indexes);            //bez liczby iteracji
+        if(choice==6)wynik=bogosort(s,Indexes, limit);
 
 //        long czas = System.currentTimeMillis() - startTime;
 
