@@ -20,13 +20,6 @@ public class SortingMadnessController {
          if (input.getList().isEmpty()) {
              throw new IllegalArgumentException("Lista nie może być pusta.");
          }
-         if (input.getAlgorithm() == null) {
-             throw new IllegalArgumentException("Musisz wskazać numer algorytmu.");
-         }
-         int algorithm = input.getAlgorithm();
-         if (algorithm < 1 || algorithm > 6) {
-             throw new IllegalArgumentException("Nieprawidłowy numer algorytmu.");
-         }
 
          SortingMadnessOutput output = new SortingMadnessOutput();
          List<?> list = input.getList();
@@ -69,6 +62,44 @@ public class SortingMadnessController {
                  }
                  values[i] = val;
              }
+         }
+
+         Integer algorithm = input.getAlgorithm();
+         // czy użytkownik chce automatycznego doboru algorytmu
+         if (Boolean.TRUE.equals(input.getAutoChoose())) {
+             // czy pierwsze 10 elementów jest posortowanych
+             boolean appearsSorted = true;
+             int checkLimit = Math.min(tabLength - 1, 10);
+             for (int i = 0; i < checkLimit; i++) {
+                 if (values[i].toString().compareTo(values[i + 1].toString()) > 0)
+                     appearsSorted = false;
+             }
+
+             // InsertionSort O(n^2)
+             // dla posortowanych zbiorów danych - szybszy, nawet do O(n)
+             if (appearsSorted) algorithm = 4;
+             // BogoSort O(n*n!)
+             // dla bardzo małych zbiorów danych
+             else if (tabLength <= 5) algorithm = 6;
+             // BubbleSort O(n^2)
+             // dla małych zbiorów danych
+             else if (tabLength <= 30) algorithm = 1;
+             // SelectionSort O(n^2)
+             // dla średnich zbiorów danych - mniej zapisów do pamięci
+             else if (tabLength <= 100) algorithm = 3;
+             // MergeSort O(n log n)
+             // dla dużych zbiorów danych
+             else if (tabLength <= 5000) algorithm = 2;
+             // QuickSort O(n log n)
+             // dla ogromnych zbiorów danych
+             else algorithm = 5;
+         }
+         else if (algorithm == null) {
+             throw new IllegalArgumentException("Musisz wskazać numer algorytmu.");
+         }
+
+         if (algorithm < 1 || algorithm > 6) {
+             throw new IllegalArgumentException("Nieprawidłowy numer algorytmu.");
          }
 
          boolean ascending = input.getAscending();
