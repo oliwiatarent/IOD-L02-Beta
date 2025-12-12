@@ -1,59 +1,59 @@
 {
     "list": [
         {
-            "name": "vyd",
-            "age": 75,
-            "score": 1.15
-        },
-        {
-            "name": "ecjua",
-            "age": 59,
-            "score": 7.35
-        },
-        {
-            "name": "zhvdpvss",
+            "name": "svozz",
             "age": 71,
-            "score": 0.32
+            "score": 12.69
         },
         {
-            "name": "iou",
-            "age": 76,
-            "score": 18.83
-        },
-        {
-            "name": "tzj",
-            "age": 52,
-            "score": 5.99
-        },
-        {
-            "name": "fnss",
-            "age": 45,
-            "score": 19.57
-        },
-        {
-            "name": "odls",
-            "age": 36,
-            "score": 1.87
-        },
-        {
-            "name": "bvhy",
+            "name": "ttd",
             "age": 56,
-            "score": 10.11
+            "score": 13.69
         },
         {
-            "name": "rgghks",
-            "age": 64,
-            "score": 0.74
+            "name": "cmoiw",
+            "age": 39,
+            "score": 11.25
         },
         {
-            "name": "yrj",
-            "age": 63,
-            "score": 7.96
+            "name": "cykqh",
+            "age": 38,
+            "score": 10.94
+        },
+        {
+            "name": "lwqtii",
+            "age": 46,
+            "score": 4.55
+        },
+        {
+            "name": "npi",
+            "age": 72,
+            "score": 11.22
+        },
+        {
+            "name": "egl",
+            "age": 75,
+            "score": 15.77
+        },
+        {
+            "name": "fyhmic",
+            "age": 31,
+            "score": 5.28
+        },
+        {
+            "name": "cir",
+            "age": 58,
+            "score": 17.87
+        },
+        {
+            "name": "klsyqrm",
+            "age": 65,
+            "score": 8.36
         }
     ],
     "ascending": true,
     "algorithm": 2,
-    "iterations": 1,
-    "autoChoose": false,
+    "iterations": 10000,
+    "autoChoose": true,
     "property": "score"
 }
