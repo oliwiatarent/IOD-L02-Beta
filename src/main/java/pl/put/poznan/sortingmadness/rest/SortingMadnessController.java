@@ -13,6 +13,11 @@ import java.util.Map;
 public class SortingMadnessController {
 
     private static final Logger logger = LoggerFactory.getLogger(SortingMadnessController.class);
+    private static SortingMadness sortingMadness = null;
+
+    public SortingMadnessController() {
+        sortingMadness = new SortingMadness();
+    }
 
      @PostMapping(consumes = "application/json", produces = "application/json")
      public SortingMadnessOutput post(@RequestBody SortingMadnessInput input) {
@@ -107,16 +112,15 @@ public class SortingMadnessController {
 
          // ustawienie typu i porządku sortowania
          boolean ascending = input.getAscending();
-         SortingMadness sm = new SortingMadness();
          switch (algorithm) {
-             case 1: sm.setStrategy(new BubbleSortStrategy());    break;
-             case 2: sm.setStrategy(new MergeSortStrategy());     break;
-             case 3: sm.setStrategy(new SelectionSortStrategy()); break;
-             case 4: sm.setStrategy(new InsertSortStrategy());    break;
-             case 5: sm.setStrategy(new QuickSortStrategy());     break;
-             case 6: sm.setStrategy(new BogoSortStrategy());      break;
+             case 1: sortingMadness.setStrategy(new BubbleSortStrategy());    break;
+             case 2: sortingMadness.setStrategy(new MergeSortStrategy());     break;
+             case 3: sortingMadness.setStrategy(new SelectionSortStrategy()); break;
+             case 4: sortingMadness.setStrategy(new InsertSortStrategy());    break;
+             case 5: sortingMadness.setStrategy(new QuickSortStrategy());     break;
+             case 6: sortingMadness.setStrategy(new BogoSortStrategy());      break;
          }
-         output = sm.sort(values, indexes, ascending, input.getIterations());
+         output = sortingMadness.sort(values, indexes, ascending, input.getIterations());
 
         if (isObjectList) {
             Object[] resultObjects = new Object[list.size()];

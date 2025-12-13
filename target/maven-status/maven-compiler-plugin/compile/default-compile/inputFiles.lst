@@ -1,5 +1,12 @@
-D:\Studia\sem5\inz_oprogramowania\IOD-L02-Beta\src\main\java\pl\put\poznan\sortingmadness\app\SortingMadnessApplication.java
-D:\Studia\sem5\inz_oprogramowania\IOD-L02-Beta\src\main\java\pl\put\poznan\sortingmadness\rest\SortingMadnessInput.java
-D:\Studia\sem5\inz_oprogramowania\IOD-L02-Beta\src\main\java\pl\put\poznan\sortingmadness\rest\SortingMadnessOutput.java
-D:\Studia\sem5\inz_oprogramowania\IOD-L02-Beta\src\main\java\pl\put\poznan\sortingmadness\logic\SortingMadness.java
-D:\Studia\sem5\inz_oprogramowania\IOD-L02-Beta\src\main\java\pl\put\poznan\sortingmadness\rest\SortingMadnessController.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/SortStrategy.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/rest/SortingMadnessController.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/BogoSortStrategy.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/MergeSortStrategy.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/BubbleSortStrategy.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/InsertSortStrategy.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/QuickSortStrategy.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/rest/SortingMadnessInput.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/app/SortingMadnessApplication.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/SelectionSortStrategy.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/logic/SortingMadness.java
+/Users/oliwia/Documents/GitHub/IOD-L02-Beta/src/main/java/pl/put/poznan/sortingmadness/rest/SortingMadnessOutput.java
