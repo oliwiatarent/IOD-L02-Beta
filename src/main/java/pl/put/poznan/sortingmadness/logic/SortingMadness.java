@@ -286,6 +286,8 @@ public class SortingMadness {
 
         for (int i = 0; i < len; i++) {
             wynikLista[i] = Data[wynik[i]];
+            String logeroutput = wynikLista[i].toString();
+            SortingLogger.info(logeroutput);
         }
 
         long czas = System.currentTimeMillis() - startTime;
