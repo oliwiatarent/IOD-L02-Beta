@@ -12,7 +12,7 @@ import java.util.Map;
 @RequestMapping("/sort")
 public class SortingMadnessController {
 
-    private static final Logger logger = LoggerFactory.getLogger(SortingMadnessController.class);
+    public static final Logger ControllerLogger = LoggerFactory.getLogger(SortingMadnessController.class);
 
      @PostMapping(consumes = "application/json", produces = "application/json")
      public SortingMadnessOutput post(@RequestBody SortingMadnessInput input) {

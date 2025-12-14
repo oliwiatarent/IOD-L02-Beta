@@ -1,4 +1,6 @@
 package pl.put.poznan.sortingmadness.logic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,8 +12,11 @@ import pl.put.poznan.sortingmadness.rest.SortingMadnessOutput;
  */
 public class SortingMadness {
 
-    public SortingMadness () {
+    public static Logger SortingLogger = LoggerFactory.getLogger(SortingMadness.class);
+    
 
+    public SortingMadness () {
+        SortingLogger.info("Hello World\n");
     }
 
     public static void split(String[] Data, int start, int stop, Integer[] Indexes){
@@ -52,7 +57,7 @@ public class SortingMadness {
     }
 
     public static Integer [] bubblesort (String[] Data, Integer[] Indexes, int limit){
-
+        SortingLogger.debug("bubblesort start\n");
         Integer N = Data.length;
 
         for(int i=0;i<N && i<limit; i++){
@@ -67,19 +72,22 @@ public class SortingMadness {
                 }
             }
         }
+        SortingLogger.debug("bubblesort end\n");
         return Indexes;
     }
     public static Integer [] mergesort (String[] Data, Integer[] Indexes){
+        SortingLogger.debug("mergesort start\n");
         int N = Data.length;
 
 
         split(Data,0,N-1,Indexes);
 
-
+        SortingLogger.debug("mergesort end\n");
         return Indexes;
     }
 
     public static Integer [] selectionsort (String[] Data, Integer[] Indexes, int limit){
+        SortingLogger.debug("selection sort start\n");
         int N = Data.length;
         Integer[] newIndexes = new Integer[N];
         for(int i=0;i<N && i<limit;i++){
@@ -103,11 +111,13 @@ public class SortingMadness {
         }
 
         Indexes=newIndexes;
+        SortingLogger.debug("selection sort end\n");
         return Indexes;
     }
 
 
     public static Integer [] insertsort (String[] Data, Integer[] Indexes, int limit){
+        SortingLogger.debug("insert sort start\n");
         int N = Data.length;
 
 
@@ -124,6 +134,7 @@ public class SortingMadness {
                 j--;
             }
         }
+        SortingLogger.debug("insert sort end\n");
         return Indexes;
     }
 
@@ -180,14 +191,16 @@ public class SortingMadness {
 
     }
     public static Integer [] quicksort (String[] Data, Integer[] Indexes){
+        SortingLogger.debug("quicksort start\n");
         int N = Data.length;
 
         qs(Data,Indexes);
-
+        SortingLogger.debug("quicksort end\n");
         return Indexes;
     }
 
     public static Integer [] bogosort(String[] Data, Integer[] Indexes, int limit){
+        SortingLogger.debug("bogosort start\n");
         int N = Data.length;
         boolean[] used = new boolean [N];
         for(int i=0;i<N;i++)used[i]=false;
@@ -217,10 +230,11 @@ public class SortingMadness {
         }
 
 
-
+        SortingLogger.debug("bogosort end\n");
         return Indexes;
     }
     public static String [] convert(Object[] Data){
+        SortingLogger.info("started converting");
         int N = Data.length;
 
         String[] s = new String [N];
@@ -241,6 +255,7 @@ public class SortingMadness {
     }
 
     public static SortingMadnessOutput ChooseSort(Object[] Data, Integer[] Indexes, int choice, Boolean ascending, Integer iterations) {
+        SortingLogger.info("Choosing sort");
 
         SortingMadnessOutput output = new SortingMadnessOutput();
 
