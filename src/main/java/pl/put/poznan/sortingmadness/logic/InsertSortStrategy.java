@@ -4,6 +4,10 @@ import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 
 import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
 
+/**
+ * Implementacja algorytmu sortowania przez wstawianie (Insertion Sort).
+ * Algorytm obsługuje parametr liczby iteracji.
+ */
 public class InsertSortStrategy implements SortStrategy {
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("insert sort start\n");

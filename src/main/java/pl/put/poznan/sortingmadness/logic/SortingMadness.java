@@ -8,21 +8,44 @@ import java.util.concurrent.ThreadLocalRandom;
 import pl.put.poznan.sortingmadness.rest.SortingMadnessOutput;
 
 /**
- * This is just an example to show that the logic should be outside the REST service.
+ * Klasa zarządzająca logiką sortowania.
  */
 public class SortingMadness {
+
+    /**
+     * Aktualnie wybrana strategia sortowania.
+     */
     private SortStrategy strategy;
 
+    /**
+     * Logger dla klasy.
+     */
     public static Logger SortingLogger = LoggerFactory.getLogger(SortingMadness.class);
 
+    /**
+     * Konstruktor.
+     */
     public SortingMadness () {
         SortingLogger.info("Hello World\n");
     }
 
+    /**
+     * Ustawia algorytm sortowania.
+     * @param strategy obiekt implementujący interfejs SortStrategy
+     */
     public void setStrategy(SortStrategy strategy) {
         this.strategy = strategy;
     }
 
+    /**
+     * Konwertuje tablicę obiektów na tablicę {@code String} do porównywania.
+     *
+     * Metoda obsługuje liczby zmiennoprzecinkowe, dodając wiodące i kończące zera,
+     * aby porównywanie leksykograficzne dawało poprawne wyniki.
+     *
+     * @param Data tablica obiektów do konwersji
+     * @return tablica {@code String}
+     */
     public static String [] convert(Object[] Data){
         SortingLogger.info("started converting");
         int N = Data.length;
@@ -44,6 +67,15 @@ public class SortingMadness {
         return s;
     }
 
+    /**
+     * Przeprowadza sortowanie danych odpowiednim algorytmem.
+     *
+     * @param Data tablica obiektów do posortowania
+     * @param Indexes tablica początkowych indeksów
+     * @param ascending kierunek sortowania ({@code true} - rosnąco, {@code false} - malejąco)
+     * @param iterations liczba iteracji
+     * @return obiekt {@link SortingMadnessOutput} zawierający wynik, czas i posortowane indeksy
+     */
     public SortingMadnessOutput sort(Object[] Data, Integer[] Indexes, Boolean ascending, Integer iterations) {
         SortingLogger.info("Starting sort. Options: ascending=" + ascending + ", iterations=" + iterations);
 

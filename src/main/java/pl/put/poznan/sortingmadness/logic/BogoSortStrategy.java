@@ -4,6 +4,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
 
+/**
+ * Implementacja algorytmu sortowania losowego (Bogo Sort).
+ * Algorytm obsługuje parametr liczby iteracji.
+ */
 public class BogoSortStrategy implements SortStrategy{
     public Integer [] sort(String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("bogosort start\n");

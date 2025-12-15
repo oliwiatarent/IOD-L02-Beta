@@ -2,7 +2,10 @@ package pl.put.poznan.sortingmadness.logic;
 
 import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
 
-//bez liczby iteracji
+/**
+ * Implementacja algorytmu sortowania przez scalanie (Merge Sort).
+ * Algorytm NIE obsługuje parametru liczby iteracji.
+ */
 public class MergeSortStrategy implements SortStrategy {
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("mergesort start\n");

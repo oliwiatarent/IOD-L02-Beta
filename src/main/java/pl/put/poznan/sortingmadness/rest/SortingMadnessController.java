@@ -7,17 +7,51 @@ import pl.put.poznan.sortingmadness.logic.*;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Kontroler REST API obsługujący żądania sortowania.
+ *
+ * Udostępnia punkt końcowy {@code /sort} akceptujący żądania POST.
+ * Odpowiada za walidację danych wejściowych, automatyczny wybór algorytmu
+ * oraz delegowanie zadania do reszty programu.
+ */
 @RestController
 @RequestMapping("/sort")
 public class SortingMadnessController {
 
+    /** Logger dla kontrolera. */
     public static final Logger ControllerLogger = LoggerFactory.getLogger(SortingMadnessController.class);
+
+    /** Instancja logiki sortującej. */
     private static SortingMadness sortingMadness = null;
 
+    /** Konstruktor inicjalizujący obiekt logiki biznesowej. */
     public SortingMadnessController() {
         sortingMadness = new SortingMadness();
     }
+
+
+    /**
+     * Obsługuje żądanie POST {@code /sort}.
+     *
+     * Metoda waliduje dane wejściowe,
+     * wyodrębnia wartości do posortowania,
+     * wybiera algorytm sortowania,
+     * uruchamia sortowanie i zwraca wynik.
+     * <p>
+     * Automatyczny wybór algorytm {@code autoChoose = true}:
+     * <ul>
+     * <li>jeśli dane wydają się posortowane - Insertion Sort (4)</li>
+     * <li>{@code tabLength <= 5} - Bogo Sort (6)</li>
+     * <li>{@code tabLength <= 30} - Bubble Sort (1)</li>
+     * <li>{@code tabLength <= 100} - Selection Sort (3)</li>
+     * <li>{@code tabLength <= 5000} - Merge Sort (2)</li>
+     * <li>{@code tabLength > 5000} - Quick Sort (5)</li>
+     * </ul>
+     *
+     * @param input obiekt {@link SortingMadnessInput} z JSONa
+     * @return obiekt {@link SortingMadnessOutput} zawierający wynik sortowania
+     * @throws IllegalArgumentException gdy dane wejściowe są nieprawidłowe
+     */
      @PostMapping(consumes = "application/json", produces = "application/json")
      public SortingMadnessOutput post(@RequestBody SortingMadnessInput input) {
 

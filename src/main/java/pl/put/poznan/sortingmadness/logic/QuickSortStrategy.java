@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
 
-//bez liczby iteracji
+/**
+ * Implementacja algorytmu sortowania szybkiego (Quick Sort).
+ * Algorytm NIE obsługuje parametru liczby iteracji.
+ */
 public class QuickSortStrategy implements SortStrategy{
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("quicksort start\n");

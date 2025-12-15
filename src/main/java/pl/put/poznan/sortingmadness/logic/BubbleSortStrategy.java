@@ -2,6 +2,10 @@ package pl.put.poznan.sortingmadness.logic;
 
 import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
 
+/**
+ * Implementacja algorytmu sortowania bąbelkowego (Bubble Sort).
+ * Algorytm obsługuje parametr liczby iteracji.
+ */
 public class BubbleSortStrategy implements SortStrategy {
     @Override
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
