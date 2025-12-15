@@ -2,7 +2,7 @@ package pl.put.poznan.sortingmadness.rest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.sortingmadness.logic.SortingMadness;
+import pl.put.poznan.sortingmadness.logic.*;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +13,11 @@ import java.util.Map;
 public class SortingMadnessController {
 
     public static final Logger ControllerLogger = LoggerFactory.getLogger(SortingMadnessController.class);
+    private static SortingMadness sortingMadness = null;
 
+    public SortingMadnessController() {
+        sortingMadness = new SortingMadness();
+    }
      @PostMapping(consumes = "application/json", produces = "application/json")
      public SortingMadnessOutput post(@RequestBody SortingMadnessInput input) {
 
@@ -21,7 +25,7 @@ public class SortingMadnessController {
              throw new IllegalArgumentException("Lista nie może być pusta.");
          }
 
-         SortingMadnessOutput output = new SortingMadnessOutput();
+         SortingMadnessOutput output;
          List<?> list = input.getList();
          int tabLength = list.size();
          float time = 0;
@@ -34,6 +38,7 @@ public class SortingMadnessController {
 
          boolean isObjectList = list.get(0) instanceof Map;
 
+         // jeśli lista obiektów to pobieramy własności, po których będziemy sortować
          if (isObjectList) {
              if (input.getProperty() == null || input.getProperty().isEmpty()) {
                  throw new IllegalArgumentException("Nie podano własności, po której sortować listę obiektów.");
@@ -51,6 +56,7 @@ public class SortingMadnessController {
                  }
                  values[i] = val;
              }
+         // lista jednowymiarowa
          } else {
              if (input.getProperty() != null) {
                  throw new IllegalArgumentException("Podano sortowanie po polu dla listy jednowymiarowej.");
@@ -103,7 +109,16 @@ public class SortingMadnessController {
          }
 
          boolean ascending = input.getAscending();
-         output = SortingMadness.ChooseSort(values, indexes, algorithm, ascending, input.getIterations());
+         // ustawienie typu i porządku sortowania
+         switch (algorithm) {
+             case 1: sortingMadness.setStrategy(new BubbleSortStrategy());    break;
+             case 2: sortingMadness.setStrategy(new MergeSortStrategy());     break;
+             case 3: sortingMadness.setStrategy(new SelectionSortStrategy()); break;
+             case 4: sortingMadness.setStrategy(new InsertSortStrategy());    break;
+             case 5: sortingMadness.setStrategy(new QuickSortStrategy());     break;
+             case 6: sortingMadness.setStrategy(new BogoSortStrategy());      break;
+         }
+         output = sortingMadness.sort(values, indexes, ascending, input.getIterations());
 
         if (isObjectList) {
             Object[] resultObjects = new Object[list.size()];
