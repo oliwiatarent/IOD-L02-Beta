@@ -72,6 +72,24 @@
                     <release>11</release>
                 </configuration>
             </plugin>
+
+  	    <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>11</source>
+                    <encoding>UTF-8</encoding>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+                        <goals><goal>javadoc</goal><goal>jar</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
