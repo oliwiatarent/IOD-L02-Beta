@@ -10,6 +10,8 @@ import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
  */
 public class QuickSortStrategy implements SortStrategy{
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
+        System.out.println("test");
+
         SortingLogger.debug("quicksort start\n");
         int N = Data.length;
 
