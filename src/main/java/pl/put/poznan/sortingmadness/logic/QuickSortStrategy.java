@@ -15,7 +15,7 @@ public class QuickSortStrategy implements SortStrategy{
         SortingLogger.debug("quicksort start\n");
         int N = Data.length;
 
-        qs(Data,Indexes);
+//        qs(Data,Indexes);
 
         SortingLogger.debug("quicksort end\n");
         return Indexes;
