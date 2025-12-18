@@ -5,6 +5,7 @@ import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
 /**
  * Implementacja algorytmu sortowania bąbelkowego (Bubble Sort).
  * Algorytm obsługuje parametr liczby iteracji.
+ * Ala ma kota.
  */
 public class BubbleSortStrategy implements SortStrategy {
     @Override
