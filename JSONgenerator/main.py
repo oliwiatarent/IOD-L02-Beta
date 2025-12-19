@@ -26,25 +26,26 @@ def generate_object_list(length=10):
         lst.append(obj)
     return lst
 
-def generate_json(simple=True, length=10, value_type="int", algorithm=1, ascending=True, property_name=None, iterations=None):
+def generate_json(simple=True, length=10, value_type="int", algorithm=1, ascending=True, property_name=None, iterations=None, autoChoose=False):
     data = {
         "list": generate_simple_list(length, value_type) if simple else generate_object_list(length),
         "ascending": ascending,
         "algorithm": algorithm,
         "iterations": 10000,
-        "autoChoose": False,
+        "autoChoose": autoChoose,
         "property": property_name if not simple else None
     }
     return data
 
 if __name__ == "__main__":
     simple = False # 1 - lista jednowymiarowa / 0 - obiekty
-    length = 10
+    property_name = "score"
+    length = 10000
     algorithm = 2
     ascending = True
-    property_name = "score"
     val_type = "float"
     iterations=10000
+    autoChoose = False    
 
     json_data = generate_json(simple=simple,
                               length=length,
@@ -52,7 +53,8 @@ if __name__ == "__main__":
                               algorithm=algorithm,
                               ascending=ascending,
                               property_name=property_name,
-                              iterations)
+                              iterations=iterations,
+                              autoChoose=autoChoose)
 
     now = datetime.now()
     # filename = now.strftime("%Y%m%d_%H%M%S") + ".json"
