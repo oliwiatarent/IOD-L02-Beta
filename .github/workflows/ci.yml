@@ -18,18 +18,13 @@ jobs:
           
       - name: Validate, build and run tests
         run: mvn --batch-mode --update-snapshots verify
+        
       - name: build JAR
         run: mvn --batch-mode --update-snapshots package
+        
       - name: upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: app
           path: target/*.jar
-      
-      - name: generate JavaDoc
-        run: mvn javadoc:javadoc
-      - name: upload Javadoc
-        uses: actions/upload-artifact@v4
-        with:
-          name: javadoc
-          path: target/site/apidocs
+          
