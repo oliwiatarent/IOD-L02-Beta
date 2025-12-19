@@ -12,6 +12,5 @@ Rozpakowanie JavaDocs
 jar xf io-project-architecture-1.0-javadoc.jar
 ```
 
----
 <br>
 <img src="diagram_uml.png" width="100%" />
