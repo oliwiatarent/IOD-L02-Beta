@@ -5,12 +5,11 @@ import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
 /**
  * Implementacja algorytmu sortowania bąbelkowego (Bubble Sort).
  * Algorytm obsługuje parametr liczby iteracji.
- * Ala ma kota.
  */
 public class BubbleSortStrategy implements SortStrategy {
     @Override
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
-//        SortingLogger.debug("bubblesort start\n");
+        SortingLogger.debug("bubblesort start\n");
         int N = Data.length;
 
         for(int i=0;i<N && i<limit; i++){
