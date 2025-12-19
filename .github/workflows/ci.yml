@@ -1,6 +1,6 @@
 name: Java CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -8,11 +8,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'adopt'
           cache: maven
+          
       - name: Validate, build and run tests
         run: mvn --batch-mode --update-snapshots verify
+      - name: build JAR
+        run: mvn --batch-mode --update-snapshots package
+      - name: upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: target/*.jar
+      
+      - name: generate JavaDoc
+        run: mvn javadoc:javadoc
+      - name: upload Javadoc
+        uses: actions/upload-artifact@v4
+        with:
+          name: javadoc
+          path: target/site/apidocs
