@@ -8,9 +8,9 @@ def random_string(length=5):
 
 def generate_simple_list(length=10, value_type="int"):
     if value_type == "int":
-        return [random.randint(0, 20) for i in range(length)]
+        return [random.randint(0, 1000) for i in range(length)]
     elif value_type == "float":
-        return [round(random.uniform(0, 20), 2) for i in range(length)]
+        return [round(random.uniform(0, 100), 2) for i in range(length)]
     elif value_type == "str":
         return [random_string(random.randint(3, 8)) for i in range(length)]
     return []
@@ -21,7 +21,7 @@ def generate_object_list(length=10):
         obj = {
             "name": random_string(random.randint(3, 8)),
             "age": random.randint(18, 80),
-            "score": round(random.uniform(0, 20), 2)
+            "score": round(random.uniform(0, 100), 2)
         }
         lst.append(obj)
     return lst
@@ -38,13 +38,18 @@ def generate_json(simple=True, length=10, value_type="int", algorithm=1, ascendi
     return data
 
 if __name__ == "__main__":
-    simple = False # 1 - lista jednowymiarowa / 0 - obiekty
+    simple = True # 1 - lista jednowymiarowa / 0 - obiekty
     property_name = "score"
     length = 10000
-    algorithm = 2
+    # algorithm = 1 # bubble
+    # algorithm = 2 # merge
+    # algorithm = 3 # selection
+    # algorithm = 4 # insertion
+    algorithm = 5 # quicksort
+    # algorithm = 6 # bogo
     ascending = True
     val_type = "float"
-    iterations=10000
+    iterations = 10000
     autoChoose = False    
 
     json_data = generate_json(simple=simple,
