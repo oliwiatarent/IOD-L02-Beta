@@ -10,6 +10,15 @@ import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
  * Przy liczbie iteracji mniejszej niż liczba elementów wypełnia puste elementy ostatnim posortowanym.
  */
 public class SelectionSortStrategy implements SortStrategy {
+    /**
+     * Sortuje dane wyborem.
+     * Działa destrukcyjnie, usuwając znalezione elementy.
+     *
+     * @param Data    tablica danych do posortowania
+     * @param Indexes tablica indeksów
+     * @param limit   maksymalna liczba iteracji pętli
+     * @return tablica indeksów po posortowaniu
+     */
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("selection sort start\n");
         int N = Data.length;
