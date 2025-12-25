@@ -7,6 +7,14 @@ import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
  * Algorytm NIE obsługuje parametru liczby iteracji.
  */
 public class MergeSortStrategy implements SortStrategy {
+    /**
+     * Sortuje dane przez scalenie.
+     *
+     * @param Data    tablica danych do posortowania
+     * @param Indexes tablica indeksów
+     * @param limit   brak implementacji
+     * @return tablica indeksów po posortowaniu
+     */
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("mergesort start\n");
         int N = Data.length;
@@ -19,6 +27,14 @@ public class MergeSortStrategy implements SortStrategy {
         return Indexes;
     }
 
+    /**
+     * Rekurencyjna metoda do implementacji dzielenia i scalania
+     *
+     * @param Data    tablica z danymi
+     * @param start   indeks początkowy aktualnego zakresu
+     * @param stop    indeks końcowy aktualnego zakresu
+     * @param Indexes tablica indeksów
+     */
     public static void split(String[] Data, int start, int stop, Integer[] Indexes){
 
         //System.out.println(start);

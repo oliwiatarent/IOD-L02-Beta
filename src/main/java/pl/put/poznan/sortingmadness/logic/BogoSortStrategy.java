@@ -9,6 +9,14 @@ import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
  * Algorytm obsługuje parametr liczby iteracji.
  */
 public class BogoSortStrategy implements SortStrategy{
+    /**
+     * Sortuje dane losowo.
+     *
+     * @param Data    tablica danych do posortowania
+     * @param Indexes tablica indeksów
+     * @param limit   maksymalna liczba iteracji pętli
+     * @return tablica indeksów po posortowaniu
+     */
     public Integer [] sort(String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("bogosort start\n");
         int N = Data.length;

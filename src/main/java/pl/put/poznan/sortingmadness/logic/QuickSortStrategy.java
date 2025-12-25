@@ -9,6 +9,14 @@ import static pl.put.poznan.sortingmadness.logic.SortingMadness.SortingLogger;
  * Algorytm NIE obsługuje parametru liczby iteracji.
  */
 public class QuickSortStrategy implements SortStrategy{
+    /**
+     * Sortuje dane quicksortem.
+     *
+     * @param Data    tablica danych do posortowania
+     * @param Indexes tablica indeksów
+     * @param limit   brak implementacji
+     * @return tablica indeksów po posortowaniu
+     */
     public Integer [] sort (String[] Data, Integer[] Indexes, int limit){
         SortingLogger.debug("quicksort start\n");
         int N = Data.length;
@@ -19,6 +27,12 @@ public class QuickSortStrategy implements SortStrategy{
         return Indexes;
     }
 
+    /**
+     * Rekurencyjna metoda do implementacji podziału i pivota.
+     *
+     * @param Data    tablica z danymi
+     * @param Indexes tablica indeksów
+     */
     public static void qs(String[] Data, Integer[] Indexes){
         if(Data.length<=1)return;
         String pivot = Data[0];
