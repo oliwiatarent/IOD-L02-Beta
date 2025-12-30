@@ -24,9 +24,14 @@ public class SortingMadnessController {
     /** Instancja logiki sortującej. */
     private static SortingMadness sortingMadness = null;
 
-    /** Konstruktor inicjalizujący obiekt logiki biznesowej. */
+    /** Bezparametrowy konstruktor inicjalizujący obiekt logiki biznesowej. */
     public SortingMadnessController() {
         sortingMadness = new SortingMadness();
+    }
+
+    /** Konstruktor przyjmujący obiekt logiki biznesowej. */
+    public SortingMadnessController(SortingMadness sm) {
+        sortingMadness = sm;
     }
 
 
@@ -82,7 +87,7 @@ public class SortingMadnessController {
              for (int i = 0; i < tabLength; i++){
                  Map<String, Object> obj = (Map<String, Object>) list.get(i);
                  if (obj == null) {
-                     throw new IllegalArgumentException("Obiekt" + i + " na liście jest null.");
+                     throw new IllegalArgumentException("Obiekt " + i + " na liście jest null.");
                  }
                  Object val = obj.get(property);
                  if (val == null) {
@@ -98,7 +103,7 @@ public class SortingMadnessController {
              for (int i = 0; i < tabLength; i++) {
                  Object val = list.get(i);
                  if (val == null) {
-                     throw new IllegalArgumentException("Element" + i + " na liście jest null.");
+                     throw new IllegalArgumentException("Element " + i + " na liście jest null.");
                  }
                  values[i] = val;
              }
