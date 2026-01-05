@@ -55,6 +55,22 @@ public class SortingMadnessControllerTest {
     }
 
     @Test
+    public void testInvalidAlgorithmIdThrowsError() {
+        List<Integer> data = Arrays.asList(1, 2, 3);
+        SortingMadnessInput input = new SortingMadnessInput(
+                data,
+                false,
+                false,
+                99,
+                10000,
+                null
+        );
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> controller.post(input));
+        assertEquals("Nieprawidłowy numer algorytmu.", ex.getMessage());
+    }
+
+    @Test
     public void testMissingPropertyThrowsError() {
         List<Map<String, Integer>> data = List.of(Map.of("score", 22));
         SortingMadnessInput input = new SortingMadnessInput(
@@ -91,6 +107,46 @@ public class SortingMadnessControllerTest {
     }
 
     @Test
+    public void testAutoChooseBubbleSort() {
+        List<Integer> data = Arrays.asList(2, 1, 4, 3, 6, 5);
+        SortingMadnessInput input = new SortingMadnessInput(
+                data,
+                true,
+                true,
+                null,
+                10000,
+                null
+        );
+
+        SortingMadnessOutput mockOutput = mock(SortingMadnessOutput.class);
+        when(mockSortingMadness.sort(any(), any(), anyBoolean(), anyInt())).thenReturn(mockOutput);
+
+        controller.post(input);
+
+        verify(mockSortingMadness).setStrategy(isA(BubbleSortStrategy.class));
+    }
+
+    @Test
+    public void testManualSelectionQuickSort() {
+        List<Integer> data = Arrays.asList(22, 66, 99, 123, 4, 68, 10);
+        SortingMadnessInput input = new SortingMadnessInput(
+                data,
+                false,
+                true,
+                5,
+                10000,
+                null
+        );
+
+        SortingMadnessOutput mockOutput = mock(SortingMadnessOutput.class);
+        when(mockSortingMadness.sort(any(), any(), anyBoolean(), anyInt())).thenReturn(mockOutput);
+
+        controller.post(input);
+
+        verify(mockSortingMadness).setStrategy(isA(QuickSortStrategy.class));
+    }
+
+    @Test
     public void testHandlingObjectsByProperty() {
         List<Map<String, Object>> data = List.of(
                 Map.of("score", 50),
@@ -122,5 +178,49 @@ public class SortingMadnessControllerTest {
         );
         verify(mockOutput).getSortedIndexes();
         verify(mockOutput).setResult(new Object[] {data.get(1), data.get(3), data.get(2), data.get(4), data.get(0)});
+    }
+
+    @Test
+    public void testHandlingParameters() {
+        List<Integer> data = Arrays.asList(10, 20, 30);
+        boolean ascending = false;
+        int iterations = 5;
+
+        SortingMadnessInput input = new SortingMadnessInput(
+                data,
+                false,
+                ascending,
+                1,
+                iterations,
+                null
+        );
+
+        SortingMadnessOutput mockOutput = mock(SortingMadnessOutput.class);
+        when(mockSortingMadness.sort(any(), any(), anyBoolean(), anyInt())).thenReturn(mockOutput);
+
+        controller.post(input);
+
+        verify(mockSortingMadness).sort(
+                any(Object[].class),
+                any(Integer[].class),
+                eq(false),
+                eq(5)
+        );
+    }
+
+    @Test
+    public void testMissingAlgorithmWithoutAutoChooseThrowsError() {
+        List<Integer> data = List.of(10, 945, 20, 204, 95);
+        SortingMadnessInput input = new SortingMadnessInput(
+                data,
+                false,
+                true,
+                null,
+                null,
+                null
+        );
+
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> controller.post(input));
+        assertEquals("Musisz wskazać numer algorytmu.", ex.getMessage());
     }
 }
