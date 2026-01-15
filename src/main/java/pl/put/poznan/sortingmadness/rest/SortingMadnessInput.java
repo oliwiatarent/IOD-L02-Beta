@@ -58,6 +58,21 @@ public class SortingMadnessInput {
      */
     private String property;
 
+    public SortingMadnessInput(List<?> list,
+                               Boolean autoChoose,
+                               Boolean ascending,
+                               Integer algorithm,
+                               Integer iterations,
+                               String property
+    ) {
+        this.list = list;
+        this.autoChoose = autoChoose;
+        this.ascending = ascending;
+        this.algorithm = algorithm;
+        this.iterations = iterations;
+        this.property = property;
+    }
+
 
     /**
      * Pobiera listę elementów do posortowania.
