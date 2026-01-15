@@ -100,4 +100,65 @@ class SortingMadnessTest {
 
         assertArrayEquals(sortedIndexes, output.getSortedIndexes());
     }
+
+    @Test
+    public void DirrentLengthFloatsStrat2(){
+        Double Data[] = {432.123424, 1111.33, 0102.304098098000, 370.3986969};
+        Integer Indexes[] = {0,1,2,3};
+        Integer SortedIndexes[] = {2,3,0,1};
+
+        SortingMadness SM = new SortingMadness();
+        BubbleSortStrategy SS = new BubbleSortStrategy();
+        SM.setStrategy(SS);
+        SortingMadnessOutput output = SM.sort(Data, Indexes, true, 100);
+        System.out.println(output.getSortedIndexes());
+        assertArrayEquals(SortedIndexes, output.getSortedIndexes());
+    }
+    @Test
+    public void ConvertTest2(){
+        Double Data[] = {432.123424, 1111.33, 102.304098098, 370.3986969};
+        String Wynik[] = {"0432.123424000","1111.330000000","0102.304098098","0370.398696900"};
+
+        SortingMadness SM = new SortingMadness();
+        BubbleSortStrategy SS = new BubbleSortStrategy();
+        SM.setStrategy(SS);
+        System.out.println(SM.convert(Data));
+        assertArrayEquals(SM.convert(Data), Wynik);
+    }
+
+    @Test
+    public void ConvertString(){
+        String Data[] = {"432.123424", "1111.33", "102.304098098", "370.3986969"};
+
+        SortingMadness SM = new SortingMadness();
+        BubbleSortStrategy SS = new BubbleSortStrategy();
+        SM.setStrategy(SS);
+        System.out.println(SM.convert(Data));
+        assertArrayEquals(SM.convert(Data), Data);
+    }
+
+    @Test
+    public void NegativeIterationsTest(){
+        Double Data[] = {432.123424, 1111.33, 0102.304098098000, 370.3986969};
+        Integer Indexes[] = {0,1,2,3};
+        Integer SortedIndexes[] = {0,1,2,3};
+
+        SortingMadness SM = new SortingMadness();
+        BubbleSortStrategy SS = new BubbleSortStrategy();
+        SM.setStrategy(SS);
+        SortingMadnessOutput output = SM.sort(Data, Indexes, true, -1);
+        assertArrayEquals(SortedIndexes, output.getSortedIndexes());
+    }
+    @Test
+    public void NegativeNumbers(){
+        Integer Data[] = {-1,222,-20,4};
+        Integer Indexes[] = {0,1,2,3};
+        Integer SortedIndexes[] = {2,0,3,1};
+
+        SortingMadness SM = new SortingMadness();
+        BubbleSortStrategy SS = new BubbleSortStrategy();
+        SM.setStrategy(SS);
+        SortingMadnessOutput output = SM.sort(Data, Indexes, true, 0);
+        assertArrayEquals(SortedIndexes, output.getSortedIndexes());
+    }
 }

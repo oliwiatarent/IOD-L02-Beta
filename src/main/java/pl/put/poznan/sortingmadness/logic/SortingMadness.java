@@ -78,8 +78,15 @@ public class SortingMadness {
      */
     public SortingMadnessOutput sort(Object[] Data, Integer[] Indexes, Boolean ascending, Integer iterations) {
         SortingLogger.info("Starting sort. Options: ascending=" + ascending + ", iterations=" + iterations);
-
         SortingMadnessOutput output = new SortingMadnessOutput();
+
+        if(iterations<0){
+            output.setTime(0);
+            output.setResult(Data);
+            output.setSortedIndexes(Indexes);
+
+            return output;
+        }
 
         int len = Indexes.length;
         int limit = (iterations != null && iterations > 0) ?  iterations : Integer.MAX_VALUE;
