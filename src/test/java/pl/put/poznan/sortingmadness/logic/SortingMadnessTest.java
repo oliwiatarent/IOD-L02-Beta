@@ -131,8 +131,7 @@ class SortingMadnessTest {
         String Data[] = {"432.123424", "1111.33", "102.304098098", "370.3986969"};
 
         SortingMadness SM = new SortingMadness();
-        BubbleSortStrategy SS = new BubbleSortStrategy();
-        SM.setStrategy(SS);
+        SM.setStrategy(mockSortStrategy);
         System.out.println(SM.convert(Data));
         assertArrayEquals(SM.convert(Data), Data);
     }
