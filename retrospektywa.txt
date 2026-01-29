@@ -1,0 +1,28 @@
+KARTECZKI:
++ dobra komunikacja w zespole
++ nie było kłótni
++ dobrze się pracowało
+
++ wszyscy pracowali na czas
++ łatwo było ustalać terminy
+
++ fajnie się podzieliliśmy
++ podobał mi się podział pracy
+
+
+- spotkanie przy jedzeniu to nienajlepszy pomysł
+- lepiej pracowało się twarzą w twarz
+
+- nie podobały mi się technologie
+
+- preferuje inne języki programowania
+- nie interesowała mnie tematyka projektu
+
+
+WNIOSKI:
+1. + utrzymać dobrą komunikację i współpracę
+4. + utrzymać terminowość
+3. + zachować równomierny podział pracy
+2. - lepiej spotykać się fizycznie
+5. - warto zweryfikować wykorzystywane technologie
+6. - warto urozmaicić zakres projektu
