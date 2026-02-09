@@ -5,7 +5,7 @@
 ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
 ![JUnit5](https://img.shields.io/badge/JUnit5-f5f5f5?style=for-the-badge&logo=junit5&logoColor=dc524a)
 
-A RESTful API application designed to sort datasets using various algorithms. It assists users in evaluating which method performs best for specific cases. Numerical data is sorted normally, while text data is sorted lexicographically. The application supports 6 different sorting methods and is accessible as a remote API.
+A RESTful API application designed to sort datasets using various algorithms for the Software Engineering course at Poznan University of Technology. It assists users in evaluating which method performs best for specific cases. Numerical data is sorted normally, while text data is sorted lexicographically. The application supports 6 different sorting methods and is accessible as a remote API.
 
 ![example workflow](https://github.com/oliwiatarent/IOD-L02-Beta/actions/workflows/ci.yml/badge.svg)
 
